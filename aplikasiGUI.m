@@ -1,30 +1,4 @@
 function varargout = aplikasiGUI(varargin)
-% APLIKASIGUI MATLAB code for aplikasiGUI.fig
-%      APLIKASIGUI, by itself, creates a new APLIKASIGUI or raises the existing
-%      singleton*.
-%
-%      H = APLIKASIGUI returns the handle to a new APLIKASIGUI or the handle to
-%      the existing singleton*.
-%
-%      APLIKASIGUI('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in APLIKASIGUI.M with the given input arguments.
-%
-%      APLIKASIGUI('Property','Value',...) creates a new APLIKASIGUI or raises the
-%      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before aplikasiGUI_OpeningFcn gets called.  An
-%      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to aplikasiGUI_OpeningFcn via varargin.
-%
-%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
-%      instance to run (singleton)".
-%
-% See also: GUIDE, GUIDATA, GUIHANDLES
-
-% Edit the above text to modify the response to help aplikasiGUI
-
-% Last Modified by GUIDE v2.5 21-Nov-2021 07:12:34
-
-% Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
@@ -69,38 +43,14 @@ function varargout = aplikasiGUI_OutputFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Get default command line output from handles structure
+% Get default command line output from handles structure Inisialisasi
+% pertama untuk panel yang diaktifkan.
 varargout{1} = handles.output;
 set(handles.panel2, 'visible', 'off')
 set(handles.panel3, 'visible', 'off')
 
-% --- Executes on button press in pushbutton3.
-function pushbutton3_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton3 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-set(handles.panel, 'visible', 'on')
-set(handles.panel2, 'visible', 'off')
-set(handles.pushbutton1, 'visible', 'on')
-set(handles.pushbutton2, 'visible', 'on')
-set(handles.pushbutton3, 'visible', 'off')
-set(handles.text2, 'visible', 'on')
-set(handles.text3, 'visible', 'on')
-set(handles.text4, 'visible', 'on')
-set(handles.text5, 'visible', 'on')
-set(handles.text6, 'visible', 'on')
-set(handles.text7, 'visible', 'on')
-set(handles.text8, 'visible', 'on')
-set(handles.text9, 'visible', 'on')
-set(handles.text10, 'visible', 'on')
-set(handles.text14, 'visible', 'off')
-
-
-% --- Executes on button press in pushbutton1.
+% Executes on button press in pushbutton1 Untuk menampilkan Panel Informasi
 function pushbutton1_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 set(handles.panel, 'visible', 'off')
 set(handles.panel2, 'visible', 'on')
 set(handles.panel3, 'visible', 'off')
@@ -126,11 +76,8 @@ set(handles.text15, 'visible', 'off')
 set(handles.text16, 'visible', 'off')
 set(handles.text17, 'visible', 'off')
 
-% --- Executes on button press in pushbutton2.
+% Executes on button press in pushbutton2 Untuk menampilkan panel utama
 function pushbutton2_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton2 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 set(handles.panel, 'visible', 'off')
 set(handles.panel2, 'visible', 'off')
 set(handles.panel3, 'visible', 'on')
@@ -156,12 +103,27 @@ set(handles.text15, 'visible', 'on')
 set(handles.text16, 'visible', 'on')
 set(handles.text17, 'visible', 'on')
 
+% Executes on button press in pushbutton3 Untuk Kembali ke panel menu
+function pushbutton3_Callback(hObject, eventdata, handles)
+set(handles.panel, 'visible', 'on')
+set(handles.panel2, 'visible', 'off')
+set(handles.pushbutton1, 'visible', 'on')
+set(handles.pushbutton2, 'visible', 'on')
+set(handles.pushbutton3, 'visible', 'off')
+set(handles.text2, 'visible', 'on')
+set(handles.text3, 'visible', 'on')
+set(handles.text4, 'visible', 'on')
+set(handles.text5, 'visible', 'on')
+set(handles.text6, 'visible', 'on')
+set(handles.text7, 'visible', 'on')
+set(handles.text8, 'visible', 'on')
+set(handles.text9, 'visible', 'on')
+set(handles.text10, 'visible', 'on')
+set(handles.text14, 'visible', 'off')
 
-% --- Executes on button press in pushbutton4.
+% Executes on button press in pushbutton4 Untuk mengunggah gambar ke
+% aplikasi
 function pushbutton4_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton4 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 [filename,pathname]=uigetfile('*.jpg;*.png;*.jpeg');
 if ~isequal(filename,0)
     handles.data1 = imread(fullfile(pathname,filename));
@@ -173,9 +135,8 @@ else
     return
 end
 
-
-
-% --- Executes on button press in pushbutton5.
+% --- Executes on button press in pushbutton5 Untuk mendeteksi wajah ke
+% aplikasi
 function pushbutton5_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton5 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -186,7 +147,7 @@ thresholdFace = 1;
 thresholdParts = 1;
 stdsize = 176;
 
-nameDetector = {'LeftEye'; 'RightEye'; 'Mouth'; 'Nose'; };
+nameDetector = {'LeftEye'; 'RightEye'; 'Mouth'; 'Nose'; }; %viola jones di sini secara kerangka kerja menggunakan deteksi pada mata, mulut dan hidung.
 mins = [[12 18]; [12 18]; [15 25]; [15 18]; ];
 
 detector.stdsize = stdsize;
@@ -266,9 +227,23 @@ end
 hold off
 toc
 
+% Executes on button press in pushbutton untuk menyimpan gambar dari
+% hasil deteksi
+function pushbutton_Callback(hObject, eventdata, handles)
+img = getframe(gca);
+[filename2,pathname2] = uiputfile(...
+    {'*.bmp','bitmap image (*.bmp)';
+    '*.jpg','jpeg image(*.bmp)';
+    '*.*','All file(*.*)'},...
+    'Save Image');
+if ~isequal(filename2,0)
+    imwrite(img.cdata,fullfile(pathname2,filename2));
+else
+    return
+end
 
 
-% --- Executes on button press in pushbutton7.
+% --- Executes on button press in pushbutton7 Untuk kembali ke panel menu
 function pushbutton7_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton7 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -297,21 +272,3 @@ set(handles.text14, 'visible', 'off')
 set(handles.text15, 'visible', 'off')
 set(handles.text16, 'visible', 'off')
 set(handles.text17, 'visible', 'off')
-
-
-% --- Executes on button press in pushbutton.
-function pushbutton_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-img = getframe(gca);
-[filename2,pathname2] = uiputfile(...
-    {'*.bmp','bitmap image (*.bmp)';
-    '*.jpg','jpeg image(*.bmp)';
-    '*.*','All file(*.*)'},...
-    'Save Image');
-if ~isequal(filename2,0)
-    imwrite(img.cdata,fullfile(pathname2,filename2));
-else
-    return
-end
